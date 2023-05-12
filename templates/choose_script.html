@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>RPG劇本</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+  <body>
+
+
+
+    <br></br>
+    <h1 class="font-weight-bold text-center">目前已解鎖劇本</h1>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <a href="{{url_for('scriptsystem.rpg_showscript',scriptName='兇靈線')}}">
+            <div class="card text-white text-center p-3" style="background-color: rgb(136, 136, 136);">
+              <h3 class="font-weight-bold text-center">兇靈線</h3>
+              <p class="font-weight-bold">目前進度:</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a href="{{url_for('scriptsystem.rpg_showscript',scriptName='巫師線')}}">
+            <div class="card text-white text-center p-3" style="background-color: rgb(214, 137, 43);">
+              <h3 class="font-weight-bold text-center">巫師線</h3>
+              <p class="font-weight-bold">目前進度:</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a href="{{url_for('scriptsystem.rpg_showscript',scriptName='李日凱線')}}">
+            <div class="card text-white text-center p-3" style="background-color: rgb(14, 163, 255);">
+              <h3 class="font-weight-bold text-center">李日凱線</h3>
+              <p class="font-weight-bold">目前進度:</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a href="{{url_for('scriptsystem.rpg_showscript',scriptName='ㄎㄎ長線')}}">
+            <div class="card text-white text-center p-3" style="background-color: rgb(137, 49, 220);">
+              <h3 class="font-weight-bold text-center">ㄎㄎ長線</h3>
+              <p class="font-weight-bold">目前進度:</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a href="{{url_for('scriptsystem.rpg_showscript',scriptName='大學長線')}}">
+            <div class="card text-white text-center p-3" style="background-color: rgb(223, 52, 52);">
+              <h3 class="font-weight-bold text-center">大學長線</h3>
+              <p class="font-weight-bold">目前進度:</p>
+            </div>
+          </a>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="container">
+      <br>
+      <div class="row">
+          <div class="col-3"></div>
+          <div class="border border-2 p-2 col-6 text-center">
+              <a href="{{url_for('loginsystem.userPage')}}" style="font-size:50px">回首頁</a>
+          </div>
+          <div class="col-3"></div>
+      </div>        
+    </div>
+    <!-- 引入 jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- 引入 Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- 引入 Bootstrap JavaScript 檔案 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

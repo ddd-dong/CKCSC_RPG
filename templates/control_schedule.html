@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>管理員控制板</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+    
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form action="{{url_for('adminsystem.Receive_and_update')}}" method="POST">
+                    <label>加入進度還是移出進度</label>
+                    <div class="form-group">
+                        <select class="form-control" id="action-select" name="join_delete">
+                            <option>加入進度還是移出進度</option>
+                            <option>join</option>
+                            <option>delete</option>
+                
+                        </select>
+                    </div>
+                    <label>小分隊</label>
+                    <div class="form-group">
+                        <select class="form-control" id="team-select" name="select_team">
+                            <option>請選擇小分隊</option>
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="first-select">當前劇情線</label>
+                        <select class="form-control" id="first-select" name="plot_line">
+                            <option>請選擇當前劇情線</option>
+                            <option>兇靈線</option>
+                            <option>巫師線</option>
+                            <option>李日凱線</option>
+                            <option>ㄎㄎ長線</option>
+                            <option>大學長線</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="second-select">選擇關卡</label>
+                        <select class="form-control" id="second-select" name="level"></select>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <br></br>
+        <br></br>
+        <div id="show_progress">
+
+        </div>
+    </div>
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="border border-2 p-2 col-6 text-center">
+                <a href="{{url_for('loginsystem.userPage')}}" style="font-size:50px">回首頁</a>
+            </div>
+            <div class="col-3"></div>
+        </div>        
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        const allprogress_dict = JSON.parse({{allprogress|tojson}})
+        const script_wholeprogress_dict = JSON.parse({{script_wholeprogress|tojson}})
+    </script>
+    <script src="/static/schedule.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- 引入 Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- 引入 Bootstrap JavaScript 檔案 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>
