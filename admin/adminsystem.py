@@ -7,7 +7,7 @@ import json
 
 app_route = Blueprint('adminsystem',__name__,static_folder='static', static_url_path='/static')
 
-'''__測試用__'''
+'''__init__'''
 
 progress_tracker.update_team_progress(0,"join",{"event":1,"choise":0},"兇靈線")
 progress_tracker.update_team_progress(0,"join",{"event":1,"choise":0},"巫師線")
@@ -36,6 +36,7 @@ def control_schedule():
     if _LoginUser_infomation["privileges"]!="admin":
         return redirect(url_for('scriptsystem.rpg_main'))
     _ap = getAllteam_Allprogress()
+    print(_ap)
     return render_template("control_schedule.html",allprogress = json.dumps(_ap),script_wholeprogress=json.dumps(script_wholeprogress))
 
 

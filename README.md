@@ -48,3 +48,31 @@
 │   │   user.py             與登入有關的function
 │
 ````
+## Function規格
+
+### 進度管理
+* 新增進度  (名子可以改)
+```
+名子: get_all_progress
+功能: 取得所有的進度(進度的歷程)
+輸入: -
+輸出: [{隊伍0:str,全進度:dict},{隊伍1:str,全進度:dict}...]
+```
+```
+名子: get_progress
+功能: 取得所有player的最新的進度
+輸入: -
+輸出: [{隊伍0:str,最新進度:dict},{隊伍1:str,最新進度:dict}...]
+```
+```
+名子: 
+功能: 取得該player的最新的進度
+輸入: player小隊
+輸出: {'event': 1, 'choise': 0}
+```
+```
+名子: 
+功能: 取得該player的全部的進度
+輸入: player小隊
+輸出: [{'event': 1, 'choise': 0}, {'event': 2, 'choise': 0}, {'event': 3, 'choise': 0}]
+```
