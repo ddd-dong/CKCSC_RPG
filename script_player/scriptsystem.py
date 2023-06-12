@@ -36,6 +36,7 @@ def rpg_showscript(scriptName:str):
         print(_LoginUser_infomation)
         return "你4誰"
     _teamN = int(_LoginUser_infomation['privileges'])
+    
     # print(progress_tracker.get_all_progress(1))
     # print(_teamN,progress_tracker.get_all_progress(_teamN))
     _old_script=show_old_script(progress_tracker.get_all_progress(_teamN)[scriptName],scriptName,progress_tracker.get_progress(_teamN)[scriptName]['event'])
@@ -46,6 +47,7 @@ def rpg_showscript(scriptName:str):
 @app_route.route("/api/script",methods = ["POST"])
 def returnScript():
     _LoginUser_infomation = isLogin()
+    print(request.get_json())
     if not _LoginUser_infomation['privileges'].isdigit():
         print(_LoginUser_infomation)
         return {"text":f"ERRO:{_LoginUser_infomation} is not intable",
@@ -54,9 +56,9 @@ def returnScript():
     
     _teamN = int(_LoginUser_infomation['privileges'])
     # print(request.args)
-    scriptName = request.args['scriptName']
+    scriptName = request.get_json()['scriptName']
     # print(request.args['updateChapter'].split('-'))
-    updateChapter =  {'event':int(request.args['updateChapter'].split('-')[0]),'choise':int(request.args['updateChapter'].split('-')[1])}
+    updateChapter =  {'event':int(request.get_json()['updateChapter'].split('-')[0]),'choise':int(request.get_json()['updateChapter'].split('-')[1])}
     updateChapter = get_nextevent(progress_tracker.get_all_progress(_teamN)[scriptName],updateChapter)
     # print(updateChapter,f"{updateChapter['event']}-{updateChapter['choise']}")
     # print(RPG_Script[scriptName].get_act(updateChapter['event']).get_event(updateChapter['choise']))
