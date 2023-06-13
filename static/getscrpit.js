@@ -1,12 +1,12 @@
 // const request_ajax = new XMLHttpRequest()
 // const add_button = document.getElementById("add_button")
 let add_count = 0
-let scriptAllprogres =[]
+// let scriptAllprogres =[]
 
-for(let _progress in scriptAllprogress_dict ){
-    console.log(`${scriptAllprogress_dict[_progress]['event']}-${scriptAllprogress_dict[_progress]['choise']}`)
-    scriptAllprogres.push(`${scriptAllprogress_dict[_progress]['event']}-${scriptAllprogress_dict[_progress]['choise']}`)
-}
+// for(let _progress in scriptAllprogress_dict ){
+//     console.log(`${scriptAllprogress_dict[_progress]['event']}-${scriptAllprogress_dict[_progress]['choise']}`)
+//     scriptAllprogres.push(`${scriptAllprogress_dict[_progress]['event']}-${scriptAllprogress_dict[_progress]['choise']}`)
+// }
 
 function typing(ele_text_p,Stext,count,delay){
     if (count>=Stext.length){

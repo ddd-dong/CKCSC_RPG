@@ -1,27 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="static/main.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="static/main.css">
+  
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    
+    .container {
+      margin-top: 100px;
+    }
+    
+    .border-custom {
+      border-width: 2px;
+      border-color: #6c757d;
+      border-radius: 10px;
+      background-color: #fff;
+    }
+    
+    .border-custom a {
+      display: block;
+      padding: 10px;
+      color: #000;
+      text-decoration: none;
+    }
+    
+    .border-custom a:hover {
+      background-color: #6c757d;
+      color: #fff;
+      transition: background-color 0.3s ease;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <br>
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="border border-2 p-2 col-6 text-center">
-                <h2>Home Page</h2>
-                <a href="{{url_for('loginsystem.login')}}">log in</a>
-                <br>
-                <a href="{{url_for('loginsystem.userPage')}}">User page</a>
-                
-            </div>
-            <div class="col-3"></div>
-        </div>        
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="border-custom p-3 text-center">
+          <h2>Welcome to</h2> 
+          <h2>IZCC-Project RPG</h2>
+          <p>Please choose an option:</p>
+          <a href="{{url_for('loginsystem.login')}}">Log In</a>
+          <a href="{{url_for('loginsystem.userPage')}}">User Page</a>
+        </div>
+      </div>
     </div>
+  </div>
 </body>
+
 </html>

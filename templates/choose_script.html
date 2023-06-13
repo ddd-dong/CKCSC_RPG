@@ -1,81 +1,158 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>RPG劇本</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <title>RPG劇本</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
 
+    .card-container {
+      position: relative;
+      overflow: hidden;
+    }
 
+    .card-container:hover .card-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    <br></br>
-    <h1 class="font-weight-bold text-center">目前已解鎖劇本</h1>
-    
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 mb-3">
-          <a href="{{url_for('scriptsystem.rpg_showscript',scriptName='兇靈線')}}">
-            <div class="card text-white text-center p-3" style="background-color: rgb(136, 136, 136);">
-              <h3 class="font-weight-bold text-center">兇靈線</h3>
+    .card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transform: translateY(100%);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      border-radius: 10px;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card h3 {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .card p {
+      font-weight: bold;
+    }
+
+    .btn-back {
+      font-size: 32px;
+      text-decoration: none;
+      color: #000;
+      transition: color 0.3s, background-color 0.3s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .btn-back:hover {
+      color: #fff;
+      background-color: #888;
+    }
+  </style>
+</head>
+<body>
+  <br>
+  <h1 class="font-weight-bold text-center">目前已解鎖劇本</h1>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-4 mb-3 card-container">
+        <a href="{{url_for('scriptsystem.rpg_showscript',scriptName='兇靈線')}}">
+          <div class="card text-white p-3" style="background-color: rgb(136, 136, 136);">
+            <div class="card-overlay"></div>
+            <div class="card-content">
+              <h3 class="font-weight-bold">兇靈線</h3>
               <p class="font-weight-bold">目前進度:</p>
             </div>
-          </a>
-        </div>
-        <div class="col-md-4 mb-3">
-          <a href="{{url_for('scriptsystem.rpg_showscript',scriptName='巫師線')}}">
-            <div class="card text-white text-center p-3" style="background-color: rgb(214, 137, 43);">
-              <h3 class="font-weight-bold text-center">巫師線</h3>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-4 col-12 mb-3 card-container">
+        <a href="{{url_for('scriptsystem.rpg_showscript',scriptName='巫師線')}}">
+          <div class="card text-white p-3" style="background-color: rgb(214, 137, 43);">
+            <div class="card-overlay"></div>
+            <div class="card-content">
+              <h3 class="font-weight-bold">巫師線</h3>
               <p class="font-weight-bold">目前進度:</p>
             </div>
-          </a>
-        </div>
-        <div class="col-md-4 mb-3">
-          <a href="{{url_for('scriptsystem.rpg_showscript',scriptName='李日凱線')}}">
-            <div class="card text-white text-center p-3" style="background-color: rgb(14, 163, 255);">
-              <h3 class="font-weight-bold text-center">李日凱線</h3>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-4 col-12 mb-3 card-container">
+        <a href="{{url_for('scriptsystem.rpg_showscript',scriptName='李日凱線')}}">
+          <div class="card text-white p-3" style="background-color: rgb(14, 163, 255);">
+            <div class="card-overlay"></div>
+            <div class="card-content">
+              <h3 class="font-weight-bold">李日凱線</h3>
               <p class="font-weight-bold">目前進度:</p>
             </div>
-          </a>
-        </div>
-        <div class="col-md-4 mb-3">
-          <a href="{{url_for('scriptsystem.rpg_showscript',scriptName='ㄎㄎ長線')}}">
-            <div class="card text-white text-center p-3" style="background-color: rgb(137, 49, 220);">
-              <h3 class="font-weight-bold text-center">ㄎㄎ長線</h3>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-4 col-12 mb-3 card-container">
+        <a href="{{url_for('scriptsystem.rpg_showscript',scriptName='ㄎㄎ長線')}}">
+          <div class="card text-white p-3" style="background-color: rgb(137, 49, 220);">
+            <div class="card-overlay"></div>
+            <div class="card-content">
+              <h3 class="font-weight-bold">ㄎㄎ長線</h3>
               <p class="font-weight-bold">目前進度:</p>
             </div>
-          </a>
-        </div>
-        <div class="col-md-4 mb-3">
-          <a href="{{url_for('scriptsystem.rpg_showscript',scriptName='大學長線')}}">
-            <div class="card text-white text-center p-3" style="background-color: rgb(223, 52, 52);">
-              <h3 class="font-weight-bold text-center">大學長線</h3>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-4 col-12 mb-3 card-container">
+        <a href="{{url_for('scriptsystem.rpg_showscript',scriptName='大學長線')}}">
+          <div class="card text-white p-3" style="background-color: rgb(223, 52, 52);">
+            <div class="card-overlay"></div>
+            <div class="card-content">
+              <h3 class="font-weight-bold">大學長線</h3>
               <p class="font-weight-bold">目前進度:</p>
             </div>
-          </a>
-        </div>
-        
+          </div>
+        </a>
       </div>
     </div>
+  </div>
 
-    <div class="container">
-      <br>
-      <div class="row">
-          <div class="col-3"></div>
-          <div class="border border-2 p-2 col-6 text-center">
-              <a href="{{url_for('loginsystem.userPage')}}" style="font-size:50px">回首頁</a>
-          </div>
-          <div class="col-3"></div>
-      </div>        
-    </div>
-    <!-- 引入 jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <div class="container">
+    <br>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="border border-2 p-2 col-6 text-center">
+            <a href="{{url_for('loginsystem.userPage')}}" class="btn-back">回首頁</a>
+        </div>
+        <div class="col-3"></div>
+    </div>        
+  </div>
 
-    <!-- 引入 Popper.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- Include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
-    <!-- 引入 Bootstrap JavaScript 檔案 -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <!-- Include Popper.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
-  </body>
+  <!-- Include Bootstrap JavaScript -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
 </html>

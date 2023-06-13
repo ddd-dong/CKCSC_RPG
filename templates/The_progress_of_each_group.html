@@ -1,81 +1,105 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-       
-      
-        <title>管理員控制板</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<head>
+    <meta charset="UTF-8">
+    <title>管理員控制板</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
 
-        
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            margin-top: 50px;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .progress-label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .progress-bar-container {
+            max-width: 80%;
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
                     <a class="nav-link" href="control_schedule.html">送出當前小組進度<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="The_progress_of_each_group.html">各組進度狀況</a>
-                    </li>
-                </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1>零小進度</h1>
+    <div class="container">
+        <div class="progress-label">
+            凶靈線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 40%; background-color: rgb(136, 136, 136)"></div>
             </div>
-        </nav>
-        <div style="text-align:center;">
-            <h1 class="font-weight-bold">零小進度</h1>
-        </div>
-        <div style="text-align:center;">
-            <label>凶靈線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:</label>
-        </div>
-        <div class="progress" style="max-width: 80%; margin: 0 auto;">
-            
-            <div class="progress-bar" role="progressbar" style="width: 40%; background-color: rgb(136, 136, 136);"></div>
-        </div>
-        
-        <div style="text-align:center;">
-            <label>巫師線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:</label>
-        </div>
-        <div class="progress" style="max-width: 80%; margin: 0 auto;">
-            <div class="progress-bar" role="progressbar" style="width: 50%; background-color: rgb(214, 137, 43);"></div>
-        </div>
-        
-        <div style="text-align:center;">
-            <label>李日凱線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:</label>
-        </div>
-        <div class="progress" style="max-width: 80%; margin: 0 auto;">
-            
-            <div class="progress-bar" role="progressbar" style="width: 60%; background-color: rgb(14, 163, 255);"></div>
-        </div>
-        
-        <div style="text-align:center;">
-            <label>ㄎㄎ長線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:</label>
-        </div>
-        <div class="progress" style="max-width: 80%; margin: 0 auto;">            
-            <div class="progress-bar" role="progressbar" style="width: 70%; background-color: rgb(137, 49, 220);"></div>
-        </div>
-        
-        <div style="text-align:center;">
-            <label>大學長線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:</label>
-        </div>
-        <div class="progress" style="max-width: 80%; margin: 0 auto;">            
-            <div class="progress-bar" role="progressbar" style="width: 70%; background-color: rgb(223, 52, 52);"></div>
         </div>
 
+        <div class="progress-label">
+            巫師線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 50%; background-color: rgb(214, 137, 43)"></div>
+            </div>
+        </div>
 
-        
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <div class="progress-label">
+            李日凱線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 60%; background-color: rgb(14, 163, 255)"></div>
+            </div>
+        </div>
 
-        <!-- 引入 Popper.js -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <div class="progress-label">
+            ㄎㄎ長線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 70%; background-color: rgb(137, 49, 220)"></div>
+            </div>
+        </div>
 
-        <!-- 引入 Bootstrap JavaScript 檔案 -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    
-          
-    </body>
+        <div class="progress-label">
+            大學長線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 70%; background-color: rgb(223, 52, 52)"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
 </html>

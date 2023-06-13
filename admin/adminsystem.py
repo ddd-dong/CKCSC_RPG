@@ -2,30 +2,28 @@ from flask import Blueprint, render_template,redirect,url_for,request
 from admin.progressController import progress_tracker 
 from admin.schedule import getAllteam_Allprogress
 from login.user import isLogin
-from __init__ import script_wholeprogress
+from __init__ import script_wholeprogress,teamNumber
 import json
 
 app_route = Blueprint('adminsystem',__name__,static_folder='static', static_url_path='/static')
 
 '''__init__'''
 
-progress_tracker.update_team_progress(0,"join",{"event":1,"choise":0},"兇靈線")
-progress_tracker.update_team_progress(0,"join",{"event":1,"choise":0},"巫師線")
-progress_tracker.update_team_progress(0,"join",{"event":1,"choise":0},"ㄎㄎ長線")
-progress_tracker.update_team_progress(0,"join",{"event":1,"choise":0},"大學長線")
-progress_tracker.update_team_progress(0,"join",{"event":1,"choise":0},"李日凱線")
-
-progress_tracker.update_team_progress(1,"join",{"event":1,"choise":0},"兇靈線")
-progress_tracker.update_team_progress(1,"join",{"event":1,"choise":0},"巫師線")
-progress_tracker.update_team_progress(1,"join",{"event":1,"choise":0},"ㄎㄎ長線")
-progress_tracker.update_team_progress(1,"join",{"event":1,"choise":0},"大學長線")
-progress_tracker.update_team_progress(1,"join",{"event":1,"choise":0},"李日凱線")
-
-progress_tracker.update_team_progress(2,"join",{"event":1,"choise":0},"兇靈線")
-progress_tracker.update_team_progress(2,"join",{"event":1,"choise":0},"巫師線")
-progress_tracker.update_team_progress(2,"join",{"event":1,"choise":0},"ㄎㄎ長線")
-progress_tracker.update_team_progress(2,"join",{"event":1,"choise":0},"大學長線")
-progress_tracker.update_team_progress(2,"join",{"event":1,"choise":0},"李日凱線")
+# progress_tracker.join(0,'1-0',"兇靈線")
+# progress_tracker.join(0,'1-0',"巫師線")
+# progress_tracker.join(0,'1-0',"ㄎㄎ長線")
+# progress_tracker.join(0,'1-0',"大學長線")
+# progress_tracker.join(0,'1-0',"李日凱線")
+# progress_tracker.join(1,'1-0',"兇靈線")
+# progress_tracker.join(1,'1-0',"巫師線")
+# progress_tracker.join(1,'1-0',"ㄎㄎ長線")
+# progress_tracker.join(1,'1-0',"大學長線")
+# progress_tracker.join(1,'1-0',"李日凱線")
+# progress_tracker.join(2,'1-0',"兇靈線")
+# progress_tracker.join(2,'1-0',"巫師線")
+# progress_tracker.join(2,'1-0',"ㄎㄎ長線")
+# progress_tracker.join(2,'1-0',"大學長線")
+# progress_tracker.join(2,'1-0',"李日凱線")
 '''__________'''
 
 @app_route.route("/schedule")
@@ -35,9 +33,9 @@ def control_schedule():
         return redirect(url_for('loginsystem.login'))
     if _LoginUser_infomation["privileges"]!="admin":
         return redirect(url_for('scriptsystem.rpg_main'))
-    _ap = getAllteam_Allprogress()
+    _ap = progress_tracker.get_all_team_all_progress()
     print(_ap)
-    return render_template("control_schedule.html",allprogress = json.dumps(_ap),script_wholeprogress=json.dumps(script_wholeprogress))
+    return render_template("control_schedule.html",allprogress = json.dumps(_ap),script_wholeprogress=json.dumps(script_wholeprogress),teamNumber=teamNumber)
 
 
 @app_route.route("/api/Receive_and_update",methods = ["GET","POST"])
@@ -51,11 +49,10 @@ def Receive_and_update():
     join_delete=str(request.values['join_delete'])
     select_team=int(request.values['select_team'])
     plot_line=str(request.values['plot_line'])
-    event,choise=map(int,request.values['level'].split("-"))
-    modified_progress={"event":event,"choise":choise}
+    modified_progress=str(request.values['level'])
     if join_delete=="join":
-        progress_tracker.join(select_team,modified_progress,plot_line)
+        print(progress_tracker.join(select_team,modified_progress,plot_line))
     elif join_delete=="delete":
         progress_tracker.delete(select_team,modified_progress,plot_line)
     return redirect(url_for('adminsystem.control_schedule'))
-    
+

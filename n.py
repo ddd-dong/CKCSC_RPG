@@ -1,25 +1,134 @@
-from __init__ import teamNumber,list_of_lines,possible_next
-
+list_of_lines = ['兇靈線',
+'ㄎㄎ長線',
+'大學長線',
+'李日凱線',
+'巫師線']
 #格式為 如果為單線  直接放下一格
 #如果為選擇 [0] = 'other' [1] = 'choose one' [2] = list of choices
 #如果為無序多任務 [0]='other' [1] = 'unordered' [2] = todo list [3] = next (after mutiroads)
 #len為最常不含0之路徑
+possible_next = {
+'兇靈線':       
+    {
+        '0' : ['1'],
+        '1'      :['2']   ,
+        '2'      :['3']      ,
+        '3'      :['4']      ,
+        '4'      :['5']      ,
+        '5'      :['6']      ,
+        '6'      :['other','choose one', ['7-1','7-2']]      ,
+        '7-1'      :['8']      ,
+        '7-2'      :['end']      ,
+        '8'      :['9']      ,
+        '9'      :['10']      ,
+        '10'     :['11']      ,
+        '11'     :['12']      ,
+        '12'     :['13']      ,
+        '13'     :['other','unordered',['14-1','14-2','14-3'],'15']      ,
+        '14-1'   :['other','doing']      ,
+        '14-2'   :['other','doing']      ,
+        '14-3'   :['other','doing']      ,
+        '15'     :['end']      ,
+        'len':2
+    },
+'ㄎㄎ長線':     
+    {
+        'len'   : 13,
+        '0'       :['1'] , 
+        '1'       :['2'] , 
+        '2'       :['3'] , 
+        '3'       :['4'] , 
+        '4'       :['5'] , 
+        '5'       :['6'] , 
+        '6'       :['7'] , 
+        '7'       :['8'] , 
+        '8'       :['9'] , 
+        '9'       :['10'] ,
+        '10'      :['11'] ,
+        '11'      :['12'] ,
+        '12'      :['13'] ,
+        '13'      :['end'], 
+    },
+'大學長線':     
+    {
+        "0"           :[  '1'],
+        '1'           :[  '2'],        
+        '2'           :[  '3'],
+        '3'           :[  '4'],        
+        '4'           :[  '5'],        
+        '5'           :[  '6'],
+        '6'           :[  '7'],        
+        '7'           :[  'other','choose one',['8-1','8-2']],        
+        '8-1'         :[  '9'],        
+        '8-2'         :[ 'end'] ,     
+        '9'           :[  '10'],        
+        '10'          :[  '11'],
+        '11'          :[  '12'],
+        '12'          :[  '13'],
+        '13'          :[  '14'],
+        '14'          :[  '15'],
+        '15'          :[  'end'],
+        'len':15
+    },
+'李日凱線':     
+    {
+        '0' :       ['1'],
+        '1' :       ['2'],                        
+        '2' :       ['other','unordered',['3-1','3-2'],'4'],                    
+        '3-1' :     ['other','doing'],                    
+        '3-2' :     ['other','doing'],
+        '4' :       ['5'],                    
+        '5' :       ['6'],                    
+        '6' :       ['7'],                    
+        '7'     :   ['other','unordered',['8-1','8-2','8-3','8-4'],'9'],
+        '8-1' :     ['other','doing'],                    
+        '8-2' :     ['other','doing'],                    
+        '8-3' :     ['other','doing'],  
+        '8-4'  :    ['other','doing'],
+        '9' :       ['10'],
+        '10' :      ['11'],
+        '11' :      ['end'],
+        'len' : 15                  
+    },
+'巫師線':
+    {
+        '0' :   ['1'],
+        '1' :   ['2'], 
+        '2' :   ['3'],
+        '3' :   ['4'],
+        '4' :   ['5'],
+        '5' :   ['other','chooce one',['6-1','6-2']],
+        '6-1' : ['7'],
+        '6-2' : ['end'],
+        '7' :   ['8'],
+        '8' :   ['9'],
+        '9' :   ['10'],
+        '10' :   ['11'],
+        '11' :   ['12'],
+        '12' :   ['13'],
+        '13' :   ['14'],
+        '14' :   ['15'],
+        '15' :   ['end'],
+        'end': ['lateriwillwritesomething'],   
+        'len' :15         
+    }
+}
 
 class create_progress:
     def __init__(self) :
         self.new_progress = {
-                                '兇靈線':  '1-0',
-                                'ㄎㄎ長線':'1-0',
-                                '大學長線':'1-0',
-                                '李日凱線':'1-0',
-                                '巫師線':  '1-0'
+                                '兇靈線':'1',
+                                'ㄎㄎ長線':'1',
+                                '大學長線':'1',
+                                '李日凱線':'1',
+                                '巫師線':'1'
                             }
         self.all_progress = {
-                                '兇靈線':       ['1-0'],
-                                'ㄎㄎ長線':     ['1-0'],
-                                '大學長線':     ['1-0'],
-                                '李日凱線':     ['1-0'],
-                                '巫師線':       ['1-0']       
+                                '兇靈線':       [],
+                                'ㄎㄎ長線':     [],
+                                '大學長線':     [],
+                                '李日凱線':     [],
+                                '巫師線':       []       
                             }
         
 #建立物件時需要輸入隊伍總數
@@ -45,14 +154,14 @@ class controller:
     def get_all_team_new_progress(self) :
         dic = {}
         for i in range(self.all_teams):
-            s = f'{i}'
+            s = f'team{i}'
             dic[s] = self.get_self_team_new_progress(i)
         return dic
         
     def get_all_team_all_progress(self):
         dic = {}
         for i in range(self.all_teams):
-            s = f'{i}'
+            s = f'team{i}'
             dic[s] = self.get_self_team_all_progress(i)
         return dic
 
@@ -67,7 +176,7 @@ class controller:
         return s
     
     #加入 (隊伍,哪條線,薪點)
-    def join(self, team_num:int, modified_road:str, line:str):
+    def join(self, team_num:int, line:str, modified_road:str):
 
         new = self.get_self_team_new_progress(team_num)
         now = new[line]
@@ -122,7 +231,7 @@ class controller:
             return f'you try to push \n\'{modified_road}\'\nbut the next is \n\'{next}\'  '
     
     #刪除 (隊伍,哪條線,薪點)
-    def delete(self, team_num:int,modified_road:str,line:str):
+    def delete(self, team_num:int, line:str, modified_road:str):
         new = self.get_self_team_new_progress(team_num)
         now = new[line]
         assert modified_road in self.teams[team_num].all_progress[line]
@@ -140,19 +249,19 @@ class controller:
     #         print(self.lost)
 
 
-
+# progress_tracker = controller(teamcounts=teamNumber)
 """下方為範例測資可自由測試"""
-progress_tracker = controller(teamcounts=teamNumber)
 # a =controller(teamcounts=5)
 
 # b = a.get_self_team_new_progress(3)['兇靈線']
+# print(a.get_self_team_new_progress(3))
 # print(possible_next['兇靈線'][b])
 
 
-# print(a.join(3,'2-0','李日凱線'))
+# print(a.join(3,'李日凱線','2'))
 # print(a.get_self_team_all_progress(3))
 
-# print(a.join(3,'李日凱線','7=0'))
+# print(a.join(3,'李日凱線','7'))
 # print(a.get_self_team_all_progress(3))
 
 # print(a.join(3,'李日凱線','3-2'))
@@ -162,28 +271,57 @@ progress_tracker = controller(teamcounts=teamNumber)
 # print(a.get_self_team_all_progress(3))
 # print(a.join(3,'李日凱線','3-1'))
 
-# # print(a.delete(3,'李日凱線','2'))
+# print(a.delete(3,'李日凱線','2'))
 # print(a.get_self_team_all_progress(3))
 # print(a.get_self_team_new_progress(3))
-# print(a.join(3,'李日凱線','4-0'))
+# print(a.join(3,'李日凱線','4'))
 # print(a.get_self_team_all_progress(3))
 
 
 # print(a.join(3,'李日凱線','3-1'))
-# print((a.join(3,'李日凱線','4-0')))
-# print((a.join(3,'李日凱線','4-0')))
-# print((a.join(3,'李日凱線','5-0')))
-# print((a.join(3,'李日凱線','6-0')))
-# # print((a.join(3,'李日凱線','7')))
-# # print((a.join(3,'李日凱線','8')))
+# print((a.join(3,'李日凱線','4')))
+# print((a.join(3,'李日凱線','4')))
+# print((a.join(3,'李日凱線','5')))
+# print((a.join(3,'李日凱線','6')))
+# print((a.join(3,'李日凱線','7')))
+# print((a.join(3,'李日凱線','8')))
 # print((a.join(3,'李日凱線','8-1')))
 # print((a.join(3,'李日凱線','8-3')))
-# a.join(3,'巫師線','2-0')
+# a.join(2,'巫師線','2')
 
 # print((a.join(3,'李日凱線','8-2')))
 # print((a.join(3,'李日凱線','8-4')))
-# print((a.join(3,'李日凱線','9-0')))
-# print((a.join(3,'李日凱線','10-0')))
-# print((a.join(3,'李日凱線','11-0')))
-# print('----------------')
+# print((a.join(3,'李日凱線','9')))
+# print((a.join(3,'李日凱線','10')))
+# print((a.join(3,'李日凱線','11')))
+# print(a.get_all_team_new_progress())
+# print((a.join(3,'李日凱線','12')))
+# print((a.join(3,'李日凱線','1')))
+# print((a.join(3,'李日凱線','7')))
+
+
 # print(a.get_self_team_all_progress(3))
+# print(a.get_all_team_all_progress())
+
+
+
+# a.join(3,'巫師線','2')
+# a.join(3,'巫師線','3')
+# a.join(3,'巫師線','4')
+# a.join(3,'巫師線','5')
+# print(a.join(3,'巫師線','6-1'))
+# print(a.join(3,'巫師線','6-1'))
+# a.join(3,'巫師線','7')
+# a.join(3,'巫師線','8')
+# a.join(3,'巫師線','9')
+# a.join(3,'巫師線','10')
+# a.join(3,'巫師線','11')
+# a.join(3,'巫師線','12')
+# a.join(3,'巫師線','13')
+# print(a.join(3,'巫師線','14'))
+# print(a.join(3,'巫師線','15'))
+# print(a.get_self_team_all_progress(3)['巫師線'])
+# print(a.get_self_team_all_progress(3))
+
+# for i in a.total(3):
+#     print(i)

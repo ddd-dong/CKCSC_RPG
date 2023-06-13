@@ -5,23 +5,125 @@ client = MongoClient("mongodb+srv://user_tst_1:aaa@mongodblearning.bafyb7n.mongo
 print(client.list_database_names())
 db = client["rpg"]
 collection = db["token_rpg"]
+teamNumber=3
+list_of_lines = ['兇靈線',
+'ㄎㄎ長線',
+'大學長線',
+'李日凱線',
+'巫師線']
+possible_next = {
+'兇靈線':       
+    {
+        '0-0' :     ['1-0'],
+        '1-0'      :['2-0']   ,
+        '2-0'      :['3-0']      ,
+        '3-0'      :['4-0']      ,
+        '4-0'      :['5-0']      ,
+        '5-0'      :['6-0']      ,
+        '6-0'      :['other','choose one', ['7-1','7-2']]      ,
+        '7-1'      :['8-0']      ,
+        '7-2'      :['end']      ,
+        '8-0'      :[' 9-0']      ,
+        '9-0'      :['10-0']      ,
+        '10-0'     :['11-0']      ,
+        '11-0'     :['12-0']      ,
+        '12-0'     :['13-0']      ,
+        '13-0'     :['other','unordered',['14-1','14-2','14-3'],'15']      ,
+        '14-1'   :['other','doing']      ,
+        '14-2'   :['other','doing']      ,
+        '14-3'   :['other','doing']      ,
+        '15-0'     :['end']      ,
+        'len':2
+    },
+'ㄎㄎ長線':     
+    {
+        'len'   : 13,
+        '0-0'       :['1-0'] , 
+        '1-0'       :['2-0'] , 
+        '2-0'       :['3-0'] , 
+        '3-0'       :['4-0'] , 
+        '4-0'       :['5-0'] , 
+        '5-0'       :['6-0'] , 
+        '6-0'       :['7-0'] , 
+        '7-0'       :['8-0'] , 
+        '8-0'       :['9-0'] , 
+        '9-0'       :['10-0'] ,
+        '10-0'      :['11-0'] ,
+        '11-0'      :['12-0'] ,
+        '12-0'      :['13-0'] ,
+        '13-0'      :['end'], 
+    },
+'大學長線':     
+    {
+        "0-0"           :[  '1-0'],
+        '1-0'           :[  '2-0'],        
+        '2-0'           :[  '3-0'],
+        '3-0'           :[  '4-0'],        
+        '4-0'           :[  '5-0'],        
+        '5-0'           :[  '6-0'],
+        '6-0'           :[  '7-0'],        
+        '7-0'           :[  'other','choose one',['8-1','8-2']],        
+        '8-1'         :[  '9-0'],        
+        '8-2'         :[ 'end'] ,     
+        '9-0'           :[  '10'],        
+        '10-0'          :[  '11-0'],
+        '11-0'          :[  '12-0'],
+        '12-0'          :[  '13-0'],
+        '13-0'          :[  '14-0'],
+        '14-0'          :[  '15-0'],
+        '15-0'          :[  'end'],
+        'len':15
+    },
+'李日凱線':     
+    {
+        '0-0' :       ['1-0'],
+        '1-0' :       ['2-0'],                        
+        '2-0' :       ['other','unordered',['3-1','3-2'],'4-0'],                    
+        '3-1' :     ['other','doing'],                    
+        '3-2' :     ['other','doing'],
+        '4-0' :       ['5-0'],                    
+        '5-0' :       ['6-0'],                    
+        '6-0' :       ['7-0'],                    
+        '7-0'     :   ['other','unordered',['8-1','8-2','8-3','8-4'],'9-0'],
+        '8-1' :     ['other','doing'],                    
+        '8-2' :     ['other','doing'],                    
+        '8-3' :     ['other','doing'],  
+        '8-4'  :    ['other','doing'],
+        '9-0' :       ['10-0'],
+        '10-0' :      ['11-0'],
+        '11-0' :      ['end'],
+        'len' : 15                  
+    },
+'巫師線':
+    {
+        '0-0' :   ['1-0'],
+        '1-0' :   ['2-0'], 
+        '2-0' :   ['3-0'],
+        '3-0' :   ['4-0'],
+        '4-0' :   ['5-0'],
+        '5-0' :   ['other','chooce one',['6-1','6-2']],
+        '6-1' : ['7-0'],
+        '6-2' : ['end'],
+        '7-0' :   ['8-0'],
+        '8-0' :   ['9-0'],
+        '9-0' :   ['10-0'],
+        '10-0' :   ['11-0'],
+        '11-0' :   ['12-0'],
+        '12-0' :   ['13-0'],
+        '13-0' :   ['14-0'],
+        '14-0' :   ['15-0'],
+        '15-0' :   ['end'],
+        'end': ['lateriwillwritesomething'],   
+        'len' :15         
+    }
+}
 # collection.insert_one({"token":"user","privileges":"1"})
 # for i in range(350):
 #        collection.delete_one({"token":"user","privileges":"1"})
 script_finalgress = {'ㄎㄎ長線':13, '兇靈線':15, '大學長線':15, '巫師線':15, '李日凱線':11}
-script_wholeprogress = {'ㄎㄎ長線':[{"event":1,"choise":0}, {"event":2,"choise":0}, {"event":3,"choise":0}, {"event":4,"choise":0}, {"event":5,"choise":0},{"event":6,"choise":0},
-                               {"event":7,"choise":0}, {"event":7,"choise":1}, {"event":8,"choise":0},{"event":9,"choise":0},{"event":10,"choise":0},{"event":11,"choise":0},
-                               {"event":12,"choise":0},{"event":13,"choise":0}],
-                        '兇靈線':[{"event":1,"choise":0}, {"event":2,"choise":0}, {"event":3,"choise":0}, {"event":4,"choise":0}, {"event":5,"choise":0},{"event":6,"choise":0},
-                               {"event":7,"choise":0}, {"event":7,"choise":1}, {"event":8,"choise":0},{"event":9,"choise":0},{"event":10,"choise":0},{"event":11,"choise":0},
-                               {"event":12,"choise":0},{"event":13,"choise":0},{"event":14,"choise":0},{"event":14,"choise":1},{"event":14,"choise":2},{"event":15,"choise":0}],
-                        '大學長線':[{"event":1,"choise":0}, {"event":2,"choise":0}, {"event":3,"choise":0}, {"event":4,"choise":0}, {"event":5,"choise":0},{"event":6,"choise":0},
-                               {"event":7,"choise":0}, {"event":8,"choise":0}, {"event":8,"choise":1},{"event":9,"choise":0},{"event":10,"choise":0},{"event":11,"choise":0},
-                               {"event":12,"choise":0},{"event":13,"choise":0},{"event":14,"choise":0},{"event":15,"choise":0}],
-                        '巫師線':[{"event":1,"choise":0}, {"event":2,"choise":0}, {"event":3,"choise":0}, {"event":4,"choise":0}, {"event":5,"choise":0},{"event":6,"choise":0},
-                               {"event":6,"choise":1}, {"event":7,"choise":0}, {"event":8,"choise":0},{"event":9,"choise":0},{"event":10,"choise":0},{"event":11,"choise":0},
-                               {"event":12,"choise":0},{"event":13,"choise":0},{"event":14,"choise":0},{"event":15,"choise":0}],
-                        '李日凱線':[{"event":1,"choise":0}, {"event":2,"choise":0}, {"event":3,"choise":0}, {"event":3,"choise":1}, {"event":4,"choise":0}, {"event":5,"choise":0},{"event":6,"choise":0},
-                               {"event":7,"choise":0}, {"event":8,"choise":0}, {"event":8,"choise":1}, {"event":8,"choise":2}, {"event":8,"choise":3}, {"event":9,"choise":0},{"event":10,"choise":0},{"event":11,"choise":0},]
-                               }
+script_wholeprogress = {'ㄎㄎ長線': ['1-0', '2-0', '3-0', '4-0', '5-0', '6-0', '7-0', '7-1', '8-0', '9-0', '10-0', '11-0', '12-0', '13-0'], 
+ '兇靈線': ['1-0', '2-0', '3-0', '4-0', '5-0', '6-0', '7-0', '7-1', '8-0', '9-0', '10-0', '11-0', '12-0', '13-0', '14-0', '14-1', '14-2', '15-0'], 
+ '大學長線': ['1-0', '2-0', '3-0', '4-0', '5-0', '6-0', '7-0', '8-0', '8-1', '9-0', '10-0', '11-0', '12-0', '13-0', '14-0', '15-0'], 
+ '巫師線': ['1-0', '2-0', '3-0', '4-0', '5-0', '6-0', '6-1', '7-0', '8-0', '9-0', '10-0', '11-0', '12-0', '13-0', '14-0', '15-0'], 
+ '李日凱線': ['1-0', '2-0', '3-0', '3-1', '4-0', '5-0', '6-0', '7-0', '8-0', '8-1', '8-2', '8-3', '9-0', '10-0', '11-0']}
 index_path=os.path.dirname(os.path.abspath(__file__))

@@ -4,26 +4,6 @@ const teamselect = document.getElementById('team-select')
 const actionselect = document.getElementById('action-select')
 const showprogressbox = document.getElementById('show_progress')
 
-console.log(allprogress_dict)
-let allprogress = {} //{team:int,{scriptName:str,["1-0",.....]}}
-let script_wholeprogress={}//{scriptName:str,["1-0",.....]}
-
-for(let teami=0;teami<3;teami++){
-    allprogress[teami]={}
-    for(let _scriptN in allprogress_dict[teami]){
-        allprogress[teami][_scriptN]=[]
-        for(let _progress in allprogress_dict[teami][_scriptN] ){
-            allprogress[teami][_scriptN].push(`${allprogress_dict[teami][_scriptN][_progress]['event']}-${allprogress_dict[teami][_scriptN][_progress]['choise']}`)
-        }
-    }
-}
-
-for(let _scriptN in script_wholeprogress_dict){
-    script_wholeprogress[_scriptN]=[]
-    for(let _progress in script_wholeprogress_dict[_scriptN] ){
-        script_wholeprogress[_scriptN].push(`${script_wholeprogress_dict[_scriptN][_progress]['event']}-${script_wholeprogress_dict[_scriptN][_progress]['choise']}`)
-    }
-}
 
 function show_progress(){
     for(let i=0;i<3;i++){

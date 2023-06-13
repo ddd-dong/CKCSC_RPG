@@ -37,12 +37,10 @@ def rpg_showscript(scriptName:str):
         return "你4誰"
     _teamN = int(_LoginUser_infomation['privileges'])
     
-    # print(progress_tracker.get_all_progress(1))
-    # print(_teamN,progress_tracker.get_all_progress(_teamN))
-    _old_script=show_old_script(progress_tracker.get_all_progress(_teamN)[scriptName],scriptName,progress_tracker.get_progress(_teamN)[scriptName]['event'])
-    # print(progress_tracker.get_all_progress(_teamN)[scriptName])
+    _old_script=show_old_script(progress_tracker.get_self_team_all_progress(_teamN)[scriptName],scriptName)
+    print(_old_script,progress_tracker.get_self_team_all_progress(_teamN)[scriptName])
     return render_template("show_script.html",scriptName=scriptName,old_script=json.dumps(_old_script),
-                           scriptAllprogress = json.dumps(progress_tracker.get_all_progress(_teamN)[scriptName]))
+                           scriptAllprogress = json.dumps(progress_tracker.get_self_team_all_progress(_teamN)[scriptName]))
 
 @app_route.route("/api/script",methods = ["POST"])
 def returnScript():
@@ -58,12 +56,13 @@ def returnScript():
     # print(request.args)
     scriptName = request.get_json()['scriptName']
     # print(request.args['updateChapter'].split('-'))
-    updateChapter =  {'event':int(request.get_json()['updateChapter'].split('-')[0]),'choise':int(request.get_json()['updateChapter'].split('-')[1])}
-    updateChapter = get_nextevent(progress_tracker.get_all_progress(_teamN)[scriptName],updateChapter)
+    updateChapter =  request.get_json()['updateChapter']
+    updateChapter = get_nextevent(progress_tracker.get_self_team_all_progress(_teamN)[scriptName],updateChapter)
+    print(updateChapter)
     # print(updateChapter,f"{updateChapter['event']}-{updateChapter['choise']}")
     # print(RPG_Script[scriptName].get_act(updateChapter['event']).get_event(updateChapter['choise']))
-    return {"text":RPG_Script[scriptName].get_act(updateChapter['event']).get_event(updateChapter['choise']).text,
-            "chapter": f"{updateChapter['event']}-{updateChapter['choise']}"}
+    return {"text":RPG_Script[scriptName].get_act(int(updateChapter.split('-')[0])).get_event(int(updateChapter.split('-')[1])).text,
+            "chapter": f"{updateChapter}"}
 
 
 
