@@ -53,7 +53,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <form action="{{url_for('adminsystem.Receive_and_update')}}" method="POST">
+            <form id='schedule_form'  method="POST"> <!--action="{{url_for('adminsystem.Receive_and_update')}}"-->
                 <div class="form-group">
                     <label for="action-select">加入進度還是移出進度</label>
                     <select class="form-control" id="action-select" name="join_delete">
@@ -86,8 +86,9 @@
                     <label for="second-select">選擇關卡</label>
                     <select class="form-control" id="second-select" name="level"></select>
                 </div>
-                <button class="btn btn-primary" type="submit">Submit</button>
+                 
             </form>
+            <button id='submit_button' class="btn btn-primary" >Submit</button><!--type="submit"-->
         </div>
     </div>
     <div id="show_progress"></div>
@@ -107,10 +108,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script>
-    const allprogress = JSON.parse({{allprogress|tojson}});
+    //const allprogress = JSON.parse({{allprogress|tojson}});
     const script_wholeprogress = JSON.parse({{script_wholeprogress|tojson}});
     const teamNumber={{teamNumber}}
+    const update_path = "{{url_for('adminsystem.Receive_and_update')}}"
+    const progress_path = "{{url_for('adminsystem.update_realtime_progress')}}"
 </script>
+<script src="static/ajax_send.js"></script>
 <script src="/static/schedule.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 

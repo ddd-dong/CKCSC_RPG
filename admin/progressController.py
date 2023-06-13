@@ -126,6 +126,7 @@ class controller:
         new = self.get_self_team_new_progress(team_num)
         now = new[line]
         assert modified_road in self.teams[team_num].all_progress[line]
+        assert len(self.teams[team_num].all_progress[line]) > 1
         if modified_road == now:
             self.teams[team_num].all_progress[line].pop()
             self.teams[team_num].new_progress[line]= self.teams[team_num].all_progress[line][len(self.teams[team_num].all_progress[line])-1]
