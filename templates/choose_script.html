@@ -83,7 +83,7 @@
             <div class="card-overlay"></div>
             <div class="card-content">
               <h3 class="font-weight-bold">兇靈線</h3>
-              <p class="font-weight-bold">目前進度:</p>
+              <p class="font-weight-bold">目前進度:{{finish_level['兇靈線']}}</p>
             </div>
           </div>
         </a>
@@ -94,7 +94,7 @@
             <div class="card-overlay"></div>
             <div class="card-content">
               <h3 class="font-weight-bold">巫師線</h3>
-              <p class="font-weight-bold">目前進度:</p>
+              <p class="font-weight-bold">目前進度:{{finish_level['巫師線']}}</p>
             </div>
           </div>
         </a>
@@ -105,7 +105,7 @@
             <div class="card-overlay"></div>
             <div class="card-content">
               <h3 class="font-weight-bold">李日凱線</h3>
-              <p class="font-weight-bold">目前進度:</p>
+              <p class="font-weight-bold">目前進度:{{finish_level['李日凱線']}}</p>
             </div>
           </div>
         </a>
@@ -116,7 +116,7 @@
             <div class="card-overlay"></div>
             <div class="card-content">
               <h3 class="font-weight-bold">ㄎㄎ長線</h3>
-              <p class="font-weight-bold">目前進度:</p>
+              <p class="font-weight-bold">目前進度:{{finish_level['ㄎㄎ長線']}}</p>
             </div>
           </div>
         </a>
@@ -127,7 +127,7 @@
             <div class="card-overlay"></div>
             <div class="card-content">
               <h3 class="font-weight-bold">大學長線</h3>
-              <p class="font-weight-bold">目前進度:</p>
+              <p class="font-weight-bold">目前進度:{{finish_level['大學長線']}}</p>
             </div>
           </div>
         </a>
@@ -140,7 +140,12 @@
     <div class="row">
         <div class="col-3"></div>
         <div class="border border-2 p-2 col-6 text-center">
-            <a href="{{url_for('loginsystem.userPage')}}" class="btn-back">回首頁</a>
+            <a href="" class="btn-back">各組完成度</a>
+        </div>
+        <div class="col-3"></div>
+        <div class="col-3"></div>
+        <div class="border border-2 p-2 col-6 text-center">
+            <a href="{{url_for('loginsystem.logout')}}" class="btn-back">登出</a>
         </div>
         <div class="col-3"></div>
     </div>        

@@ -23,7 +23,9 @@ def rpg_main():
     _LoginUser_infomation = isLogin()
     if not _LoginUser_infomation:
         return redirect(url_for('loginsystem.login'))
-    return render_template('choose_script.html',userN = _LoginUser_infomation)
+    elif _LoginUser_infomation['privileges'] == 'admin':
+        return redirect(url_for('loginsystem.userPage'))
+    return render_template('choose_script.html',userN = _LoginUser_infomation,finish_level=progress_tracker.get_self_team_new_progress(int(_LoginUser_infomation['privileges'])))
 
 @app_route.route('/rpg/show/<scriptName>')
 def rpg_showscript(scriptName:str):

@@ -7,8 +7,12 @@ app_route = Blueprint('loginsystem',__name__)
 @app_route.route('/users')
 def userPage(): 
     _LoginUser_infomation = isLogin()
-    if _LoginUser_infomation:
+    if  _LoginUser_infomation and _LoginUser_infomation['privileges'] != 'admin':
+        return redirect(url_for('scriptsystem.rpg_main'))
+    
+    elif _LoginUser_infomation['privileges'] == 'admin':
         return render_template('userPage.html',userN = _LoginUser_infomation)
+    
     return redirect(url_for('loginsystem.login'))
 
 @app_route.route('/login',methods=['GET','POST'])
