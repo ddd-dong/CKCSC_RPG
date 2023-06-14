@@ -61,9 +61,9 @@ class controller:
         s = {}
         for line in list_of_lines:
             all = possible_next[line]['len']
-            done = len(a.get_self_team_all_progress(team_num)[line])
+            done = len(self.get_self_team_all_progress(team_num)[line])
             # present = f'line \'{line}\' done{done/(all-1)*100}%'
-            s[line] = done/(all-1)*100
+            s[line] = int(done/(all-1)*100)
             # s.append(present)
         return s
     

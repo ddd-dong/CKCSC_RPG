@@ -41,63 +41,80 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
+                <!-- <li class="nav-item active">
                     <a class="nav-link" href="control_schedule.html">送出當前小組進度<span class="sr-only">(current)</span></a>
-                </li>
+                </li> -->
                 <li class="nav-item">
-                    <a class="nav-link" href="The_progress_of_each_group.html">各組進度狀況</a>
+                    <a class="nav-link" href="{{url_for('loginsystem.userPage')}}"><h3>回首頁</h3></a>
                 </li>
             </ul>
         </div>
     </nav>
-    <h1>零小進度</h1>
-    <div class="container">
-        <div class="progress-label">
-            凶靈線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:
-        </div>
-        <div class="progress-bar-container">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 40%; background-color: rgb(136, 136, 136)"></div>
+    <div id="progress_box">
+        <!-- <h1>零小進度</h1>
+        <div class="container">
+            <div class="progress-label">
+                凶靈線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:
             </div>
-        </div>
+            <div class="progress-bar-container">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 40%; background-color: rgb(136, 136, 136)"></div>
+                </div>
+            </div>
 
-        <div class="progress-label">
-            巫師線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:
-        </div>
-        <div class="progress-bar-container">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 50%; background-color: rgb(214, 137, 43)"></div>
+            <div class="progress-label">
+                巫師線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:
             </div>
-        </div>
+            <div class="progress-bar-container">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 50%; background-color: rgb(214, 137, 43)"></div>
+                </div>
+            </div>
 
-        <div class="progress-label">
-            李日凱線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:
-        </div>
-        <div class="progress-bar-container">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 60%; background-color: rgb(14, 163, 255)"></div>
+            <div class="progress-label">
+                李日凱線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:
             </div>
-        </div>
+            <div class="progress-bar-container">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 60%; background-color: rgb(14, 163, 255)"></div>
+                </div>
+            </div>
 
-        <div class="progress-label">
-            ㄎㄎ長線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:
-        </div>
-        <div class="progress-bar-container">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 70%; background-color: rgb(137, 49, 220)"></div>
+            <div class="progress-label">
+                ㄎㄎ長線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:
             </div>
-        </div>
+            <div class="progress-bar-container">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 70%; background-color: rgb(137, 49, 220)"></div>
+                </div>
+            </div>
 
-        <div class="progress-label">
-            大學長線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:
-        </div>
-        <div class="progress-bar-container">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 70%; background-color: rgb(223, 52, 52)"></div>
+            <div class="progress-label">
+                大學長線&nbsp;&nbsp;&nbsp;劇本進度:&nbsp;&nbsp;&nbsp;完成度:
             </div>
-        </div>
+            <div class="progress-bar-container">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 70%; background-color: rgb(223, 52, 52)"></div>
+                </div>
+            </div>
+        </div> -->
     </div>
-
+    <div class="container">
+    <br>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="border border-2 p-2 col-6 text-center">
+            <a href="{{url_for('scriptsystem.rpg_main')}}" style="font-size:30px">回首頁</a>
+        </div>
+        <div class="col-3"></div>
+    </div>        
+    </div>
+    <script>
+        const teamN = {{teamN}};
+        const update_progress_path = "{{url_for('scriptsystem.get_total')}}"
+    </script>
+    <script src="/static/ajax_send.js"></script>
+    <script src="/static/viewprogress.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>

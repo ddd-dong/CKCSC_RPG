@@ -33,7 +33,7 @@ possible_next = {
         '14-2'   :['other','doing']      ,
         '14-3'   :['other','doing']      ,
         '15-0'     :['end']      ,
-        'len':2
+        'len':15
     },
 'ㄎㄎ長線':     
     {

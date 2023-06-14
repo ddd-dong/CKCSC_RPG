@@ -3,6 +3,7 @@ from login.user import isLogin
 from script_player.scriptController import RPG_Script
 from script_player.showscript_player import show_old_script,get_nextevent
 from admin.progressController import progress_tracker 
+from __init__ import teamNumber
 import json
 app_route = Blueprint('scriptsystem',__name__,static_folder='static', static_url_path='/static')
 
@@ -16,7 +17,7 @@ app_route = Blueprint('scriptsystem',__name__,static_folder='static', static_url
 
 @app_route.route('/dashboard')
 def dashboard():
-    return render_template("The_progress_of_each_group.html")
+    return render_template("The_progress_of_each_group.html",teamN = teamNumber)
 
 @app_route.route('/rpg')
 def rpg_main():
@@ -66,7 +67,10 @@ def returnScript():
     return {"text":RPG_Script[scriptName].get_act(int(updateChapter.split('-')[0])).get_event(int(updateChapter.split('-')[1])).text,
             "chapter": f"{updateChapter}"}
 
-
-
-
-
+@app_route.route('/api/get_total',methods=['POST'])
+def get_total():
+    _data={}
+    for i in range(teamNumber):
+        _data[f'{i}'] = progress_tracker.total(i)
+    print(_data)
+    return _data
