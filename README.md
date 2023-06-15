@@ -16,6 +16,8 @@
 │   │  getscript.js        show_script.html 中用於取得劇本(ajax)
 │   │  schedule.js         control_schedule.html 中用於顯示目前各小隊進度與調整表單內容
 │   │  showscript.js       show_script.html 中用於調整後端傳來的劇本格式
+│   │  viewprogress.js     記分板進度更新
+│   │  ajax_send.js        用於發送fetch的好用函式
 │ 
 └───templates               html
 │   │  home.html            登入系統的主頁

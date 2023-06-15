@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template,redirect,url_for,request
+from flask import Blueprint, render_template,redirect,url_for,request,jsonify
 from login.user import isLogin
 from script_player.scriptController import RPG_Script
 from script_player.showscript_player import show_old_script,get_nextevent
@@ -73,4 +73,4 @@ def get_total():
     for i in range(teamNumber):
         _data[f'{i}'] = progress_tracker.total(i)
     print(_data)
-    return _data
+    return  jsonify(_data)

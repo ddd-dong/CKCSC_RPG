@@ -21,11 +21,12 @@ function show_total(_data){
 }
 
         
-setInterval(send_fetch('',update_progress_path,(_data)=>{
+setInterval(()=>{send_fetch('',update_progress_path,(_data)=>{
+    console.log(_data)
     if (old_data === _data){
         console.log('same');
         return
     }
     console.log(_data)
     show_total(_data);
-}))
+})},2000)

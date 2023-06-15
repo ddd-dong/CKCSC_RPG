@@ -5,8 +5,8 @@ const actionselect = document.getElementById('action-select');
 const showprogressbox = document.getElementById('show_progress');
 const schedule_form = document.getElementById('schedule_form');
 const submit_button  = document.getElementById('submit_button');
-
-function show_progress(allprogress){
+let allprogress;
+function show_progress(){
     showprogressbox.innerHTML=''
     for(let i=0;i<3;i++){
         const teambox = document.createElement('div')
@@ -28,7 +28,10 @@ function show_progress(allprogress){
     }
 }
 function updateProgress(){
-    send_fetch('',progress_path,(_data)=>{show_progress(_data)})
+    send_fetch('',progress_path,(_data)=>{
+        allprogress=_data;
+        show_progress();
+    })
 }
 
 
@@ -55,6 +58,7 @@ Cannot read properties of undefined (reading 'map')
 理論上不會出什麼問題
 */
 actionselect.addEventListener('change',()=>{
+    progressSelect.innerHTML =''
     let options=[]
     if (actionselect.value == 'join'){
         options=script_wholeprogress[scriptSelect.value]
@@ -63,11 +67,13 @@ actionselect.addEventListener('change',()=>{
         options=allprogress[teamselect.value][scriptSelect.value];
     }
     const html = options.map(option => `<option>${option}</option>`).join('');
+    console.log(html)
     progressSelect.innerHTML = html;
 })
 
 scriptSelect.addEventListener('change',()=>{
-    console.log(teamselect.value,scriptSelect.value)
+    // console.log(teamselect.value,scriptSelect.value)
+    progressSelect.innerHTML =''
     let options=[]
     if(actionselect.value == 'join'){
         options=script_wholeprogress[scriptSelect.value]
@@ -75,12 +81,13 @@ scriptSelect.addEventListener('change',()=>{
     else{
         options=allprogress[teamselect.value][scriptSelect.value];
     }
-    console.log(options)
+    // console.log(options)
     const html = options.map(option => `<option>${option}</option>`).join('');
     progressSelect.innerHTML = html;
 });
 
 teamselect.addEventListener('change',()=>{
+    progressSelect.innerHTML =''
     let options=[]
     if(actionselect.value == 'join'){
         options=script_wholeprogress[scriptSelect.value]
