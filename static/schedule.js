@@ -6,6 +6,7 @@ const showprogressbox = document.getElementById('show_progress');
 const schedule_form = document.getElementById('schedule_form');
 const submit_button  = document.getElementById('submit_button');
 let allprogress;
+
 function show_progress(){
     showprogressbox.innerHTML=''
     for(let i=0;i<3;i++){
