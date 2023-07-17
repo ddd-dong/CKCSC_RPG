@@ -32,3 +32,8 @@ function send_fetch(_data,_path,_fu){
             return erro.response.json()
         });
 }
+
+
+
+
+

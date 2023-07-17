@@ -1,25 +1,25 @@
 from __init__ import teamNumber,list_of_lines,possible_next
-
 #格式為 如果為單線  直接放下一格
 #如果為選擇 [0] = 'other' [1] = 'choose one' [2] = list of choices
 #如果為無序多任務 [0]='other' [1] = 'unordered' [2] = todo list [3] = next (after mutiroads)
 #len為最常不含0之路徑
-
 class create_progress:
     def __init__(self) :
         self.new_progress = {
-                                '兇靈線':  '1-0',
-                                'ㄎㄎ長線':'1-0',
-                                '大學長線':'1-0',
-                                '李日凱線':'1-0',
-                                '巫師線':  '1-0'
+                                '自殺案':  '1-0',
+                                '債主案':'1-0',
+                                '歌妓案':'1-0',
+                                '劍客案':'1-0',
+                                '鐵匠線':  '1-0',
+                                '主線':  '1-0'
                             }
         self.all_progress = {
-                                '兇靈線':       ['1-0'],
-                                'ㄎㄎ長線':     ['1-0'],
-                                '大學長線':     ['1-0'],
-                                '李日凱線':     ['1-0'],
-                                '巫師線':       ['1-0']       
+                                '自殺案':       ['1-0'],
+                                '債主案':     ['1-0'],
+                                '歌妓案':     ['1-0'],
+                                '劍客案':     ['1-0'],
+                                '鐵匠線':       ['1-0'] ,
+                                '主線':       ['1-0']      
                             }
         
 #建立物件時需要輸入隊伍總數
@@ -63,7 +63,7 @@ class controller:
             all = possible_next[line]['len']
             done = len(self.get_self_team_all_progress(team_num)[line])
             # present = f'line \'{line}\' done{done/(all-1)*100}%'
-            s[line] = int(done/(all-1)*100)
+            s[line] = int(done/(all)*100)
             # s.append(present)
         return s
     
@@ -76,8 +76,7 @@ class controller:
         
         if next == 'end':
             return 'this road has already end'
-        
-        
+
         if next == 'other':
             if possible_next[line][now][1] == 'chooce one':
                 if modified_road in possible_next[line][now][2]:
@@ -90,6 +89,11 @@ class controller:
                 self.unorder_running = True
                 if modified_road in self.doing['todo_list']:
                     next = modified_road
+            elif possible_next[line][now][1] != 'doing':
+                if modified_road in possible_next[line][now][2]:
+                    next = modified_road
+                possible_next[line]['ender'] = possible_next[line][now][1]
+
             
             
             if self.unorder_running:
@@ -108,13 +112,14 @@ class controller:
 
         if modified_road == next :  
             self.teams[team_num].all_progress[line].append(modified_road)
-            # try :
-            #     inx = self.lost.index(modified_road)
-            #     self.lost.pop(inx)
-            # except:
-            #     pass
             self.teams[team_num].new_progress[line] = modified_road
             next = possible_next[line][modified_road][0]
+            try :
+                if (possible_next[line][modified_road][1]) == 'judge' :
+                    jump = modified_road.split('-')[0]
+                    return self.join(team_num,f'{jump}-{possible_next[line]["ender"]}',line)
+            except:
+                pass
             if next == 'end' :
                 return f"HOORAY!!! you finish road {line}"
             return f'success push \'{modified_road}\' into line {line}'
@@ -145,11 +150,33 @@ class controller:
 
 """下方為範例測資可自由測試"""
 progress_tracker = controller(teamcounts=teamNumber)
-# a =controller(teamcounts=5)
+a =controller(teamcounts=5)
 
 # b = a.get_self_team_new_progress(3)['兇靈線']
 # print(possible_next['兇靈線'][b])
 
+# print(a.join(3,'2-0','兇靈線'))
+# print(a.join(3,'3-0','兇靈線'))
+# print(a.join(3,'4-0','兇靈線'))
+# print(a.join(3,'5-0','兇靈線'))
+# print(a.join(3,'6-0','兇靈線'))
+# print(a.get_self_team_new_progress(3))
+# print(a.join(3,'7-2','兇靈線'))
+# print(a.join(3,'8-0','兇靈線'))
+# print(a.join(3,'9-0','兇靈線'))
+# print(a.join(3,'10-0','兇靈線'))
+# print(a.join(3,'11-0','兇靈線'))
+# print(a.join(3,'12-0','兇靈線'))
+# print(a.join(3,'13-0','兇靈線'))
+# print(a.join(3,'14-0','兇靈線'))
+# print(a.join(3,'14-1','兇靈線'))
+# print(a.get_self_team_new_progress(3))
+# print(a.join(3,'14-2','兇靈線'))
+# print(a.join(3,'14-3','兇靈線'))
+# print(a.join(3,'15-0','兇靈線'))
+
+# print(a.get_self_team_all_progress(3))
+# print(possible_next['兇靈線']['ender'])
 
 # print(a.join(3,'2-0','李日凱線'))
 # print(a.get_self_team_all_progress(3))

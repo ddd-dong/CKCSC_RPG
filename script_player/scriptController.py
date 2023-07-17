@@ -1,11 +1,11 @@
 import json
 import copy
-from __init__ import index_path
+from __init__ import index_path,list_of_lines as lines
 
 # line是指哪故事線
 
-lines = ['ㄎㄎ長線', '兇靈線', '大學長線', '巫師線', '李日凱線']
-role_list = ['大學長', 'ㄎㄎ長', '李日凱', '巫師', '兇靈']
+
+role_list = ['旁白', '莫塞伊思', '關主', '檢測人員',"鐵匠",""]
 roles = []
 
 
@@ -115,16 +115,18 @@ class Act:
         wizard 巫師 3
         rekai 李日凱 4
         """
-        if name == "ㄎㄎ長":
+        if name == "旁白":
             return roles[0]
-        elif name == "兇靈":
+        elif name == "莫塞伊思":
             return roles[1]
-        elif name == "大學長":
+        elif name == "關主":
             return roles[2]
-        elif name == "巫師":
+        elif name == "檢測人員":
             return roles[3]
-        elif name == "李日凱":
+        elif name == "鐵匠":
             return roles[4]
+        elif name == "":
+            return roles[5]
 
     def __init__(self, num: int, line: str, types: str, data: dict):
         self.num = num
@@ -210,22 +212,25 @@ class Roles:
     rekai 李日凱
     """
     def __init__(self):
-        self.coco = Role(name="ㄎㄎ長")
-        self.ghost = Role(name="惡靈")
-        self.senior = Role(name="大學長")
-        self.wizard = Role(name="巫師")
-        self.rekai = Role(name="李日凱")
+        self.coco = Role(name="旁白")
+        self.ghost = Role(name="莫塞伊思")
+        self.senior = Role(name="關主")
+        self.wizard = Role(name="檢測人員")
+        self.rekai = Role(name="鐵匠")
+        self.emptyr = Role(name="")
         self.pool = [self.coco,
                      self.ghost,
                      self.senior,
                      self.wizard,
-                     self.rekai]
+                     self.rekai,
+                     self.emptyr]
         global roles
         roles = [self.coco,
                      self.ghost,
                      self.senior,
                      self.wizard,
-                     self.rekai]
+                     self.rekai,
+                     self.emptyr]
 
 
 class Script:
@@ -240,11 +245,12 @@ class Script:
     """
     def __init__(self):
         self.roles = Roles()
-        self.coco = StoryLine(name="ㄎㄎ長線")
-        self.ghost = StoryLine(name="兇靈線")
-        self.senior = StoryLine(name="大學長線")
-        self.wizard = StoryLine(name="巫師線")
-        self.rekai = StoryLine(name="李日凱線")
+        self.coco = StoryLine(name='自殺案')
+        self.ghost = StoryLine(name='債主案')
+        self.senior = StoryLine(name='歌妓案')
+        self.wizard = StoryLine(name='劍客案')
+        self.rekai = StoryLine(name='鐵匠線')
+        self.mainline = StoryLine(name='主線')
 
 
 
@@ -269,6 +275,8 @@ print(a["7"].event)
 print(a["7"].event.end)
 '''
 RPG_Full_Script = Script()
-RPG_Script = {'ㄎㄎ長線':RPG_Full_Script.coco, '兇靈線':RPG_Full_Script.ghost, '大學長線':RPG_Full_Script.senior, '巫師線':RPG_Full_Script.wizard, '李日凱線':RPG_Full_Script.rekai}
+# RPG_Script = {'ㄎㄎ長線':, '兇靈線':, '大學長線':, '巫師線':, '李日凱線':RPG_Full_Script.rekai}
+RPG_Script ={'自殺案':RPG_Full_Script.coco,'債主案':RPG_Full_Script.ghost,'歌妓案':RPG_Full_Script.senior,'劍客案':RPG_Full_Script.wizard,'鐵匠線':RPG_Full_Script.rekai,'主線':RPG_Full_Script.mainline}
+
 # print(RPG_Script['兇靈線'].get_before(15))
 # print(RPG_Script['兇靈線'].get_act(5).get_event(1).act)
