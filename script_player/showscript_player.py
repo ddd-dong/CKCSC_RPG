@@ -7,7 +7,9 @@ def show_old_script(team_all_progress:list,scriptName:str)->dict:
     \nteam_progress_now 現在的進度
     '''
     team_progress_now = script_finalgress[scriptName]
+    print(team_progress_now)
     _packScript = RPG_Script[scriptName].get_before(team_progress_now)
+
     _script = {}
     for i in team_all_progress:
         _chapter=list(map(int,i.split('-')))

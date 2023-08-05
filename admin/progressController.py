@@ -74,8 +74,12 @@ class controller:
         now = new[line]
         next = possible_next[line][now][0]
         
+
+        # if possible_next[line][now][1] == 'judge':
+            # return self.join(team_num, next, line)
+        #aaaaaaaa
         if next == 'end':
-            return 'this road has already end'
+            return 'This road has already end!!!!!!!!!!!'
 
         if next == 'other':
             if possible_next[line][now][1] == 'chooce one':
@@ -122,10 +126,13 @@ class controller:
                 pass
             if next == 'end' :
                 return f"HOORAY!!! you finish road {line}"
-            return f'success push \'{modified_road}\' into line {line}'
+            return f'Success push \'{modified_road}\' into line {line}'
         
         else :
-            return f'you try to push \n\'{modified_road}\'\nbut the next is \n\'{next}\'  '
+            if next == 'other' :
+                return f'You try to push \n\'{modified_road}\'\n but the possilbe nexts are {possible_next[line][now][2]}'
+            else :
+                return f'you try to push \n\'{modified_road}\'\nbut the next is \n\'{next}\'  '
     
     #刪除 (隊伍,哪條線,薪點)
     def delete(self, team_num:int,modified_road:str,line:str):
@@ -150,7 +157,7 @@ class controller:
 
 """下方為範例測資可自由測試"""
 progress_tracker = controller(teamcounts=teamNumber)
-a =controller(teamcounts=5)
+# a =controller(teamcounts=5)
 
 # b = a.get_self_team_new_progress(3)['兇靈線']
 # print(possible_next['兇靈線'][b])
@@ -216,3 +223,19 @@ a =controller(teamcounts=5)
 # print((a.join(3,'李日凱線','11-0')))
 # print('----------------')
 # print(a.get_self_team_all_progress(3))
+# print(a.join(3,'2-0','主線'))
+# print(a.join(3,'3-0','主線'))
+# print(a.join(3,'4-0','主線'))
+# print(a.join(3,'5-0','主線'))
+# print(a.join(3,'6-0','主線'))
+# print(a.join(3,'7-0','主線'))
+# print(a.join(3,'8-1','主線'))
+# print(a.join(3,'8-0','主線'))
+# print(a.join(3,'8-2','主線'))
+# print(a.join(3,'8-1','主線'))
+# print(a.join(3,'9-0','主線'))
+# print(a.join(3,'10-0','主線'))
+# print(a.get_self_team_new_progress(3))
+# print(a.join(3,'11-0','主線'))
+# print(a.get_self_team_all_progress(3))
+# print(a.join(3,'11-2','主線'))
